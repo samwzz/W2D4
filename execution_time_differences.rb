@@ -51,8 +51,11 @@ def largest_contiguous_subsum2(list)
     elsif number >= 0
       last_index = i
       largest_sum += number
-    elsif number < 0 && (number + largest_sum) >= 0
+    elsif number < 0  && (number + largest_sum) >= 0
       temp_sum = largest_sum + number
+    elsif number > largest_sum
+      largest_sum = number
+      last_index = i
     end
   end
   largest_sum
