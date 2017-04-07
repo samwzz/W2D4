@@ -4,8 +4,8 @@ require_relative "stack_queue"
 class MinMaxStackQueue
   def initialize
     @stackqueue = StackQueue.new
-    @max = nil
-    @min = nil
+    @max = StackQueue.new
+    @min = StackQueue.new
   end
 
   def enqueue(el)
