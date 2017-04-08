@@ -1,35 +1,43 @@
 class MinMaxStack
   def initialize
-    @max = MyStack.new
-    @min = MyStack.new
-    @stack = MyStack.new
+    @store = MyStack.new
   end
 
-  def push(el)
-    @stack.push(el)
-    @max.push(el) if @max.peek.nil || el >= @max.peek
-    @min.push(el) if @min.peek.nil || el <= @min.peek
+  def push(val)
+    @store.push({
+      max: new_max(val),
+      min: new_min(val),
+      value: val
+      })
   end
 
   def pop
-    removed_el = @stack.pop
-    @max.pop if removed_el == @max.peek
-    @min.pop if removed_el == @min.peek
+    @store.pop[:value] unless empty?
   end
 
   def max
-    @max.peek
+    @store.peek[:max] unless empty?
   end
 
   def min
-    @min.peek
+    @store.peek[:min] unless empty?
   end
 
   def size
-    @stack.size
+    @store.size
   end
 
   def empty?
-    @stack.empty?
+    @store.empty?
+  end
+
+  private
+
+  def new_max(val)
+    empty? ? val : [max, val].max
+  end
+
+  def new_min(val)
+    empty? ? val : [min, val].min
   end
 end

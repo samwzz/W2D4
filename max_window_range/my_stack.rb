@@ -7,8 +7,8 @@ class MyStack
     @store.pop
   end
 
-  def push
-    @store.push
+  def push(el)
+    @store.push(el)
   end
 
   def peek
@@ -23,21 +23,21 @@ class MyStack
     @store.empty?
   end
 
-  def max
-    max = @store.pop
-    until @store.empty?
-      current = @store.pop
-      max = current if current > max
-    end
-    max
-  end
-
-  def min
-    min = @store.pop
-    until @store.empty?
-      current = @store.pop
-      min = current if current < min
-    end
-    min
-  end
+  # def max
+  #   max = @store.pop
+  #   until @store.empty?
+  #     current = @store.pop
+  #     max = current if current > max
+  #   end
+  #   max
+  # end
+  #
+  # def min
+  #   min = @store.pop
+  #   until @store.empty?
+  #     current = @store.pop
+  #     min = current if current < min
+  #   end
+  #   min
+  # end
 end
